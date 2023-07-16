@@ -2,7 +2,7 @@ package com.mattpus.springboot.todoApp.todo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Size;
+
 
 import java.time.LocalDate;
 
@@ -26,7 +26,6 @@ public class Todo {
 
     private String username;
 
-    @Size(min=8, message="Enter at least 8 characters")
     private String description;
     private LocalDate targetDate;
     private boolean done;
@@ -39,7 +38,7 @@ public class Todo {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

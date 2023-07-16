@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,9 +28,10 @@ public class TodoService {
         return todos.stream().filter(predicate).toList();
     }
 
-    public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
+    public Todo addTodo(String username, String description, LocalDate targetDate, boolean done) {
         Todo todo = new Todo(++todosCount,username,description,targetDate,done);
         todos.add(todo);
+        return todo;
     }
 
     public void deleteById(int id) {
@@ -45,7 +45,7 @@ public class TodoService {
         return todo;
     }
 
-    public void updateTodo(@Valid Todo todo) {
+    public void updateTodo( Todo todo) {
         deleteById(todo.getId());
         todos.add(todo);
 
